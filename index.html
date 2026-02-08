@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeeLaw | The Shore of Purpose</title>
+    
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <!-- ICONS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- VARIABLES --- */
+        :root {
+            --void-dark: #050505;
+            --gold-accent: #c5a059;
+            --gold-glow: rgba(197, 160, 89, 0.3);
+            --paper-bg: #fcfbf9;
+            --text-main: #222;
+        }
+
+        /* --- SETUP --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Lora', serif;
+            background-color: var(--paper-bg);
+            color: var(--text-main);
+            line-height: 1.9;
+            font-size: 19px;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 { font-family: 'Cinzel', serif; font-weight: 700; color: var(--void-dark); }
+        a { color: #8e6e2f; text-decoration: none; transition: 0.3s ease; }
+        a:hover { color: var(--gold-accent); }
+
+        /* --- ANIMATIONS --- */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1.2s cubic-bezier(0.2, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- HERO SECTION --- */
+        header {
+            background: linear-gradient(to bottom, rgba(5,5,5,0.3), rgba(5,5,5,1)), 
+                        url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax Effect */
+            height: 100vh;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; color: white; padding: 20px;
+        }
+
+        .brand-name { 
+            font-size: 6rem; letter-spacing: 15px; text-transform: uppercase; margin-bottom: 20px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.8); 
+            border-bottom: 3px solid var(--gold-accent);
+            padding-bottom: 15px; animation: fadeInDown 1.5s ease-out;
+        }
+
+        .tagline { 
+            font-family: 'Cinzel', serif; font-size: 1.4rem; color: #e0e0e0;
+            margin-bottom: 50px; letter-spacing: 2px; text-transform: uppercase;
+            animation: fadeInUp 1.5s ease-out;
+            max-width: 900px; line-height: 1.5;
+        }
+
+        .hero-btn {
+            padding: 18px 45px; background: transparent; border: 1px solid var(--gold-accent);
+            color: var(--gold-accent); font-family: 'Cinzel', serif; letter-spacing: 3px;
+            cursor: pointer; transition: 0.4s; text-transform: uppercase; font-size: 0.85rem;
+            animation: fadeIn 2.5s ease-in; position: relative; overflow: hidden; z-index: 1;
+        }
+        .hero-btn::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 0%; height: 100%;
+            background: var(--gold-accent); z-index: -1; transition: 0.3s;
+        }
+        .hero-btn:hover { color: #000; box-shadow: 0 0 30px var(--gold-glow); }
+        .hero-btn:hover::after { width: 100%; }
+
+        /* --- AUTHOR BIO --- */
+        .bio-section {
+            padding: 120px 20px;
+            max-width: 1100px; margin: 0 auto;
+            display: flex; gap: 80px; align-items: center;
+        }
+        
+        .bio-image-col { flex: 1; }
+        
+        .profile-pic {
+            width: 100%; border-radius: 2px; padding: 10px;
+            background: #fff; border: 1px solid #e0e0e0;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            display: block; filter: sepia(10%) contrast(105%);
+        }
+        .profile-fallback {
+            width: 100%; aspect-ratio: 1/1; background: #fafafa;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 80px; color: #ccc; border-radius: 2px;
+            border: 1px solid #e0e0e0; box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .bio-text-col { flex: 1.4; }
+        
+        .bio-header { 
+            font-size: 0.9rem; letter-spacing: 4px; text-transform: uppercase; 
+            color: var(--gold-accent); margin-bottom: 25px; font-weight: bold; font-family: 'Cinzel', serif;
+            display: inline-block; border-bottom: 1px solid rgba(197, 160, 89, 0.3); padding-bottom: 5px;
+        }
+        
+        .bio-quote {
+            font-size: 1.8rem; font-family: 'Cinzel', serif; line-height: 1.4;
+            color: var(--void-dark); margin-bottom: 35px; font-style: italic;
+        }
+        
+        .bio-content { font-size: 1.15rem; color: #555; margin-bottom: 25px; text-align: left; line-height: 1.8; }
+        
+        .bio-content.first::first-letter {
+            float: left; font-family: 'Cinzel', serif; font-size: 4rem; line-height: 0.8;
+            padding-right: 15px; padding-top: 4px; color: var(--gold-accent); font-weight: 700;
+        }
+
+        .signature {
+            font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: #888;
+            margin-top: 40px; text-align: right; display: block; opacity: 0.7;
+        }
+
+        /* --- "CATCHY & CONNECTED" PHILOSOPHY SECTION --- */
+        .philosophy-section {
+            background-color: var(--void-dark);
+            background-image: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000000 100%);
+            color: #eee; padding: 120px 20px; position: relative;
+        }
+        
+        .law-container { max-width: 1200px; margin: 0 auto; }
+        
+        .section-header-center { text-align: center; margin-bottom: 80px; }
+        .section-header-center h2 { color: #fff; font-size: 3rem; letter-spacing: 5px; text-shadow: 0 0 15px var(--gold-glow); }
+        .gold-line { width: 80px; height: 2px; background: var(--gold-accent); margin: 20px auto; }
+
+        .law-grid {
+            display: flex; justify-content: space-between; align-items: stretch; gap: 40px;
+        }
+        
+        .law-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px 30px;
+            transition: 0.4s ease;
+            position: relative;
+            backdrop-filter: blur(5px);
+            text-align: center;
+            width: 31%; /* For 3-column layout */
+        }
+        
+        /* The connecting lines */
+        .law-card:not(:last-child) {
+            position: relative;
+        }
+        .law-card:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -30px;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 1px;
+            background: linear-gradient(to right, rgba(197, 160, 89, 0.5), rgba(197, 160, 89, 0));
+        }
+
+        .law-card:hover { 
+            background: rgba(255, 255, 255, 0.08); 
+            border-color: var(--gold-accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .icon-box { font-size: 2.5rem; color: var(--gold-accent); margin-bottom: 25px; text-shadow: 0 0 10px var(--gold-glow); }
+        .law-heading { font-size: 1.3rem; margin-bottom: 20px; color: #fff; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 5px var(--gold-glow); }
+        
+        /* "Manuscript" feel for the text */
+        .law-text { font-size: 1rem; color: #ccc; line-height: 1.7; font-style: italic; }
+        
+        /* --- WORKS --- */
+        .works-section { background: var(--paper-bg); padding: 120px 20px; }
+        .books-grid {
+            max-width: 1100px; margin: 0 auto; display: grid; gap: 80px;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+        }
+
+        .book-card { text-align: center; perspective: 1000px; display: flex; flex-direction: column;}
+        
+        .cover-area {
+            position: relative; width: 260px; height: 390px; margin: 0 auto 40px auto;
+            transition: transform 0.5s ease;
+        }
+        .book-card:hover .cover-area { transform: translateY(-15px); }
+
+        .book-img {
+            width: 100%; height: 100%; object-fit: cover;
+            border-radius: 2px 4px 4px 2px;
+            box-shadow: 20px 30px 50px rgba(0,0,0,0.3);
+            position: absolute; top: 0; left: 0; z-index: 10;
+            background: #fff;
+        }
+        .backup-cover {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, #1c1c1c, #3a3a3a);
+            color: #fff; display: flex; flex-direction: column; justify-content: center; padding: 20px;
+            box-shadow: 20px 30px 50px rgba(0,0,0,0.3);
+            border-left: 6px solid rgba(255,255,255,0.1); z-index: 1;
+        }
+
+        .book-role {
+            font-family: 'Cinzel', serif; font-size: 0.85rem; color: var(--gold-accent);
+            letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; display: block; font-weight: bold;
+        }
+        .book-title {
+            font-size: 1.6rem; margin-bottom: 20px; color: var(--void-dark);
+            min-height: 4rem; display: flex; align-items: center; justify-content: center;
+        }
+        .book-desc { font-size: 1.05rem; color: #555; margin-bottom: 30px; padding: 0 10px; text-align: left; line-height: 1.8; }
+        
+        .big-idea-box {
+            background: #fff; padding: 20px; border-left: 4px solid var(--gold-accent);
+            text-align: left; font-size: 0.95rem; font-style: italic; color: #444; margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .btn-container { margin-top: auto; display: flex; flex-direction: column; gap: 15px; padding: 0 10px; }
+        
+        .amazon-btn {
+            background-color: var(--gold-accent); color: #000; padding: 15px;
+            text-transform: uppercase; letter-spacing: 2px; font-weight: bold; font-family: 'Cinzel', serif;
+            font-size: 0.9rem; display: block; width: 100%; border: none; transition: 0.3s;
+        }
+        .amazon-btn:hover { background-color: #111; color: var(--gold-accent); }
+        .amazon-btn.disabled { background-color: #e0e0e0; color: #999; cursor: default; }
+        .amazon-btn.disabled:hover { background-color: #e0e0e0; color: #999; }
+        
+        .goodreads-link { font-size: 0.9rem; color: #888; display: inline-block; border-bottom: 1px dotted #ccc; transition: 0.3s;}
+        .goodreads-link:hover { color: var(--gold-accent); border-color: var(--gold-accent); }
+
+
+        /* --- CONTACT --- */
+        .contact-section { background: #f4f4f4; padding: 100px 20px; }
+        .contact-container {
+            max-width: 700px; margin: 0 auto; padding: 60px; background: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.05); text-align: center; border: 1px solid #eee;
+        }
+        input, textarea {
+            width: 100%; padding: 20px; margin-bottom: 20px; border: 1px solid #e0e0e0;
+            background: #fafafa; font-family: 'Lora', serif; font-size: 1rem; transition: 0.3s;
+        }
+        input:focus, textarea:focus { border-color: var(--gold-accent); outline: none; background: white; }
+        
+        button.submit-btn {
+            background-color: var(--void-dark); color: white; padding: 20px 40px; border: none;
+            cursor: pointer; letter-spacing: 3px; text-transform: uppercase;
+            font-family: 'Cinzel', serif; font-weight: 600; width: 100%; transition: 0.4s;
+        }
+        button.submit-btn:hover { background-color: var(--gold-accent); color: black; }
+
+        footer { background: #080808; color: #555; text-align: center; padding: 80px 20px; font-size: 0.9rem; border-top: 1px solid #222; }
+        footer a { color: #777; border-bottom: 1px dotted #555; }
+
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        @media (max-width: 900px) {
+            .bio-section { flex-direction: column; text-align: center; }
+            .bio-text-col { text-align: left; }
+            .brand-name { font-size: 3.5rem; letter-spacing: 5px; }
+            .tagline { font-size: 1.1rem; padding: 0 10px;}
+            .books-grid { grid-template-columns: 1fr; }
+            header { background-attachment: scroll; }
+            .book-title { min-height: auto; }
+            .bio-quote { font-size: 1.4rem; }
+            .profile-pic, .profile-fallback { width: 80%; margin: 0 auto; }
+            .law-grid { flex-direction: column; } /* Stack laws on mobile */
+            .law-card { width: 100%; }
+            .law-card::after { display: none; } /* Hide connecting lines on mobile */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand-name">LeeLaw</div>
+        <div class="tagline">Nothing's Core to Everything's Shore</div>
+        <a href="#works" class="hero-btn">Explore the Works</a>
+    </header>
+
+    <div id="about" class="bio-section reveal">
+        <div class="bio-image-col">
+            <img src="profile.jpg" alt="LeeLaw" class="profile-pic" onerror="this.style.display='none'; document.getElementById('fb').style.display='flex'">
+            <div id="fb" class="profile-fallback" style="display:none;"><i class="fas fa-user"></i></div>
+        </div>
+        
+        <div class="bio-text-col">
+            <div class="bio-header">About the Author</div>
+            <div class="bio-quote">"Nothing in Nothing is Nothing."</div>
+            
+            <p class="bio-content first">
+                LeeLaw is a "curious layman" on a mission to map the total spectrum of existence. His work is a journey from Nothing’s Core—the primordial, unstable vacuum of our origins—to Everything’s Shore—the complex, energy-driven reality of our future.
+            </p>
+            <p class="bio-content">
+                By synthesizing the essence of physical laws and the natural order of events with the warm necessity of human meaning, LeeLaw provides a blueprint for a world in transition. From the metaphysical insights of <i>The Equation of Life</i> to the post-labor economics of <i>Economy #As We Need It</i>, his writing serves as a compass for those navigating the vast space between the void and the infinite.
+            </p>
+
+            <span class="signature">LeeLaw</span>
+        </div>
+    </div>
+
+    <!-- PHILOSOPHY SECTION (UPGRADED) -->
+    <section class="philosophy-section">
+        <div class="law-container">
+            <div class="section-header-center reveal">
+                <h2>The Law of Lee</h2>
+                <div class="gold-line"></div>
+            </div>
+
+            <div class="law-grid">
+                
+                <div class="law-card reveal">
+                    <div class="icon-box"><i class="fas fa-bolt"></i></div>
+                    <h3 class="law-heading">The Energy Truth</h3>
+                    <p class="law-text">
+                        Everything is energy. Money is just a medium for "Transformative Energy." If our economy doesn't reflect the laws of energy conservation and thermodynamics, it is destined to fail.
+                    </p>
+                </div>
+
+                <div class="law-card reveal">
+                    <div class="icon-box"><i class="fas fa-microchip"></i></div>
+                    <h3 class="law-heading">The Post-Labor Reality</h3>
+                    <p class="law-text">
+                        For centuries, "Work" was human labor. Today, "Work" is increasingly mechanical and digital. We must decouple survival from employment and recouple it with contribution.
+                    </p>
+                </div>
+
+                <div class="law-card reveal">
+                    <div class="icon-box"><i class="fas fa-circle-notch"></i></div>
+                    <h3 class="law-heading">The Power of "Nothing"</h3>
+                    <p class="law-text">
+                        The universe started from Nothing. Your peace starts from Nothing. When you stop expecting the world to satisfy your ego, you become powerful enough to actually change the world.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- WORKS SECTION -->
+    <div id="works" class="works-section">
+        <div class="section-header-center reveal">
+            <h2 style="color:var(--void-dark)">Published Works</h2>
+            <div class="gold-line"></div>
+        </div>
+        
+        <div class="books-grid">
+            
+            <div class="book-card reveal">
+                <div class="cover-area">
+                    <div class="backup-cover">
+                        <h4 style="color:#fff; border-bottom:1px solid #777; padding-bottom:10px;">THE EQUATION<br>OF LIFE</h4>
+                        <span style="font-size:0.8rem; letter-spacing:2px; margin-top:10px;">LEELAW</span>
+                    </div>
+                    <img src="book1.jpg" alt="The Equation of Life" class="book-img" onerror="this.style.display='none'">
+                </div>
+                
+                <span class="book-role">The Foundation</span>
+                <h3 class="book-title">The Equation of Life (2015)</h3>
+                
+                <p class="book-desc">
+                    "To understand the part, you must understand the whole." Before we can fix our world, we must fix our perspective. This work bridges the gap between ancient Eastern wisdom and modern Western science. It is a manual for the soul in a material world, exploring why we suffer (Expectations) and how we thrive (Detachment).
+                </p>
+
+                <div class="big-idea-box">
+                    <strong>The Big Idea:</strong> Life is a battle against entropy. Morality is a biological necessity.
+                </div>
+
+                <div class="btn-container">
+                    <a href="https://www.amazon.com/Equation-Life-As-see/dp/B0D4H94PT8/" class="amazon-btn" target="_blank">Purchase on Amazon</a>
+                    <a href="https://www.goodreads.com/book/show/28044650-the-equation-of-life" target="_blank" class="goodreads-link">View on Goodreads</a>
+                </div>
+            </div>
+
+            <div class="book-card reveal">
+                <div class="cover-area">
+                    <div class="backup-cover" style="background: linear-gradient(135deg, #4b4b4b, #6b5b3b);">
+                        <h4 style="color:#fff; border-bottom:1px solid #999; padding-bottom:10px;">ECONOMY<br>AS WE NEED IT</h4>
+                        <span style="font-size:0.8rem; letter-spacing:2px; margin-top:10px;">LEELAW</span>
+                    </div>
+                    <img src="book2.jpg" alt="Economy As We Need It" class="book-img" onerror="this.style.display='none'">
+                </div>
+                
+                <span class="book-role">The Blueprint</span>
+                <h3 class="book-title">Economy #As We Need It (2026)</h3>
+                
+                <p class="book-desc">
+                    "The labor-for-income model is obsolete. What comes next?" Artificial Intelligence isn't a threat; it’s an opportunity to redesign human civilization. This book introduces the Transformative Energy Theory of Value—a way to measure wealth that actually makes sense in a post-labor world.
+                </p>
+
+                <div class="big-idea-box">
+                    <strong>The Big Idea:</strong> Turning welfare into a profitable business and establishing a Global Purpose Council to lead humanity to its next evolution.
+                </div>
+
+                <div class="btn-container">
+                    <span class="amazon-btn disabled">Coming Soon to Amazon</span>
+                    <a href="https://www.goodreads.com/book/show/246015566-economy-as-we-need-it" target="_blank" class="goodreads-link">View on Goodreads</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT FORM -->
+    <div class="contact-section">
+        <div class="contact-container reveal">
+            <h2>Start a Conversation</h2>
+            <p style="margin-bottom: 30px; color: #777;">Have a thought on the books? Send a message directly.</p>
+
+            <form name="contact" method="POST" data-netlify="true">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email Address" required>
+                <textarea name="message" rows="5" placeholder="Write your philosophical query here..." required></textarea>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+
+            <p style="margin-top: 30px; font-size: 0.9rem; color: #888;">
+                Or email me at <a href="mailto:2leelaw@gmail.com" style="color:#555; border-bottom: 1px solid #ccc;">2leelaw@gmail.com</a>
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 LeeLaw. All Rights Reserved.</p>
+        <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.6;">From the Core of Nothingness to the Shore of Purpose.</p>
+    </footer>
+
+    <script>
+        // Reveal Animations on Scroll
+        window.addEventListener('scroll', reveal);
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        reveal(); // Trigger once on load
+    </script>
+
+</body>
+</html>
