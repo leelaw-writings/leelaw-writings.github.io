@@ -54,7 +54,7 @@
                         url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Parallax Effect */
+            background-attachment: fixed;
             height: 100vh;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center; color: white; padding: 20px;
@@ -125,4 +125,399 @@
         }
         
         .bio-quote {
-            font-size: 1.8rem; font-family: 'Cinzel
+            font-size: 1.8rem; font-family: 'Cinzel', serif; line-height: 1.4;
+            color: var(--void-dark); margin-bottom: 35px; font-style: italic;
+        }
+        
+        .bio-content { font-size: 1.15rem; color: #555; margin-bottom: 25px; text-align: left; line-height: 1.8; }
+        
+        .bio-content.first::first-letter {
+            float: left; font-family: 'Cinzel', serif; font-size: 4rem; line-height: 0.8;
+            padding-right: 15px; padding-top: 4px; color: var(--gold-accent); font-weight: 700;
+        }
+
+        .signature {
+            font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: #888;
+            margin-top: 40px; text-align: right; display: block; opacity: 0.7;
+        }
+
+        /* --- PHILOSOPHY SECTION --- */
+        .philosophy-section {
+            background-color: var(--void-dark);
+            background-image: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #000000 100%);
+            color: #eee; padding: 120px 20px; position: relative;
+        }
+        
+        .law-container { max-width: 1200px; margin: 0 auto; }
+        
+        .section-header-center { text-align: center; margin-bottom: 80px; }
+        .section-header-center h2 { color: #fff; font-size: 3rem; letter-spacing: 5px; text-shadow: 0 0 15px var(--gold-glow); }
+        .gold-line { width: 80px; height: 2px; background: var(--gold-accent); margin: 20px auto; }
+
+        .law-grid {
+            display: flex; justify-content: space-between; align-items: stretch; gap: 40px;
+        }
+        
+        .law-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px 30px;
+            transition: 0.4s ease;
+            position: relative;
+            backdrop-filter: blur(5px);
+            text-align: center;
+            width: 31%;
+        }
+        
+        .law-card:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -30px;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 1px;
+            background: linear-gradient(to right, rgba(197, 160, 89, 0.5), rgba(197, 160, 89, 0));
+        }
+
+        .law-card:hover { 
+            background: rgba(255, 255, 255, 0.08); 
+            border-color: var(--gold-accent);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .icon-box { font-size: 2.5rem; color: var(--gold-accent); margin-bottom: 25px; text-shadow: 0 0 10px var(--gold-glow); }
+        .law-heading { font-size: 1.3rem; margin-bottom: 20px; color: #fff; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 5px var(--gold-glow); }
+        
+        .law-text { font-size: 1.05rem; color: #ccc; line-height: 1.7; font-style: italic; position: relative; z-index: 2; }
+        
+        .roman-bg {
+            position: absolute; top: -10px; width: 100%; text-align: center; font-family: 'Cinzel', serif;
+            font-size: 6rem; color: rgba(255,255,255,0.03); pointer-events: none; left: 0; z-index: 1;
+        }
+
+        /* --- WORKS SECTION --- */
+        .works-section { background: var(--paper-bg); padding: 120px 20px; }
+        .books-grid {
+            max-width: 1100px; margin: 0 auto; display: grid; gap: 80px;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+        }
+
+        .book-card { text-align: center; perspective: 1000px; display: flex; flex-direction: column;}
+        
+        .cover-area {
+            position: relative; width: 260px; height: 390px; margin: 0 auto 40px auto;
+            transition: transform 0.5s ease;
+        }
+        .book-card:hover .cover-area { transform: translateY(-15px); }
+
+        .book-img {
+            width: 100%; height: 100%; object-fit: cover;
+            border-radius: 2px 4px 4px 2px;
+            box-shadow: 20px 30px 50px rgba(0,0,0,0.3);
+            position: absolute; top: 0; left: 0; z-index: 10;
+            background: #fff;
+        }
+        .backup-cover {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, #1c1c1c, #3a3a3a);
+            color: #fff; display: flex; flex-direction: column; justify-content: center; padding: 20px;
+            box-shadow: 20px 30px 50px rgba(0,0,0,0.3);
+            border-left: 6px solid rgba(255,255,255,0.1); z-index: 1;
+        }
+
+        .book-role {
+            font-family: 'Cinzel', serif; font-size: 0.85rem; color: var(--gold-accent);
+            letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px; display: block; font-weight: bold;
+        }
+        .book-title {
+            font-size: 1.6rem; margin-bottom: 20px; color: var(--void-dark);
+            min-height: 4rem; display: flex; align-items: center; justify-content: center;
+        }
+        .book-desc { font-size: 1.05rem; color: #555; margin-bottom: 30px; padding: 0 10px; text-align: left; line-height: 1.8; }
+        
+        .big-idea-box {
+            background: #fff; padding: 20px; border-left: 4px solid var(--gold-accent);
+            text-align: left; font-size: 0.95rem; font-style: italic; color: #444; margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .btn-container { margin-top: auto; display: flex; flex-direction: column; gap: 15px; padding: 0 10px; }
+        
+        .amazon-btn {
+            background-color: var(--gold-accent); color: #000; padding: 15px;
+            text-transform: uppercase; letter-spacing: 2px; font-weight: bold; font-family: 'Cinzel', serif;
+            font-size: 0.9rem; display: block; width: 100%; border: none; transition: 0.3s;
+        }
+        .amazon-btn:hover { background-color: #111; color: var(--gold-accent); }
+        .amazon-btn.disabled { background-color: #e0e0e0; color: #999; cursor: default; }
+        .amazon-btn.disabled:hover { background-color: #e0e0e0; color: #999; }
+        
+        .goodreads-link { font-size: 0.9rem; color: #888; display: inline-block; border-bottom: 1px dotted #ccc; transition: 0.3s;}
+        .goodreads-link:hover { color: var(--gold-accent); border-color: var(--gold-accent); }
+
+        /* --- CONTACT --- */
+        .contact-section { background: #f4f4f4; padding: 100px 20px; }
+        .contact-container {
+            max-width: 700px; margin: 0 auto; padding: 60px; background: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.05); text-align: center; border: 1px solid #eee;
+        }
+        input, textarea {
+            width: 100%; padding: 20px; margin-bottom: 20px; border: 1px solid #e0e0e0;
+            background: #fafafa; font-family: 'Lora', serif; font-size: 1rem; transition: 0.3s;
+        }
+        input:focus, textarea:focus { border-color: var(--gold-accent); outline: none; background: white; }
+        
+        button.submit-btn {
+            background-color: var(--void-dark); color: white; padding: 20px 40px; border: none;
+            cursor: pointer; letter-spacing: 3px; text-transform: uppercase;
+            font-family: 'Cinzel', serif; font-weight: 600; width: 100%; transition: 0.4s;
+        }
+        button.submit-btn:hover { background-color: var(--gold-accent); color: black; }
+
+        footer { background: #080808; color: #555; text-align: center; padding: 80px 20px; font-size: 0.9rem; border-top: 1px solid #222; }
+        footer a { color: #777; border-bottom: 1px dotted #555; }
+
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        @media (max-width: 900px) {
+            .bio-section { flex-direction: column; text-align: center; }
+            .bio-text-col { text-align: left; }
+            .brand-name { font-size: 3.5rem; letter-spacing: 5px; }
+            .tagline { font-size: 1.1rem; padding: 0 10px; white-space: normal; }
+            .books-grid { grid-template-columns: 1fr; }
+            header { background-attachment: scroll; }
+            .book-title { min-height: auto; }
+            .bio-quote { font-size: 1.4rem; }
+            .profile-pic, .profile-fallback { width: 80%; margin: 0 auto; }
+            .law-grid { flex-direction: column; } 
+            .law-card { width: 100%; }
+            .law-card::after { display: none; } 
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <header>
+        <div class="brand-name">LeeLaw</div>
+        <div class="tagline">From the Core of Nothingness to the Shore of Purpose</div>
+        <a href="#works" class="hero-btn">Explore the Works</a>
+    </header>
+
+    <!-- AUTHOR BIO -->
+    <div id="about" class="bio-section reveal">
+        <div class="bio-image-col">
+            <img src="profile.jpg" alt="LeeLaw" class="profile-pic" onerror="this.style.display='none'; document.getElementById('fb').style.display='flex'">
+            <div id="fb" class="profile-fallback" style="display:none;"><i class="fas fa-user"></i></div>
+        </div>
+        
+        <div class="bio-text-col">
+            <div class="bio-header">About the Author</div>
+            <div class="bio-quote">"Nothing in Nothing is Nothing."</div>
+            
+            <p class="bio-content first">
+                LeeLaw is a "curious layman" who has spent over a decade exploring the intersection of 21st-century physics, perennial philosophy, and practical societal design. His writings trace a unified, internally consistent arc from cosmic origins to post-scarcity governance.
+            </p>
+            <p class="bio-content">
+                Driven by a focus on the common person, his work is a journey from the primordial, unstable vacuum of our origins to the complex, energy-driven reality of our future. By synthesizing the natural order of events with human meaning, he aims to provide a thoughtful blueprint for an AI-driven age of abundance.
+            </p>
+
+            <span class="signature">LeeLaw</span>
+        </div>
+    </div>
+
+    <!-- PHILOSOPHY SECTION -->
+    <section class="philosophy-section">
+        <div class="law-container">
+            <div class="section-header-center reveal">
+                <h2>The Law of Lee</h2>
+                <div class="gold-line"></div>
+            </div>
+
+            <div class="law-grid">
+                
+                <div class="law-card reveal">
+                    <div class="roman-bg">I</div>
+                    <div class="icon-box"><i class="fas fa-water"></i></div>
+                    <h3 class="law-heading">The Natural Flow</h3>
+                    <p class="law-text">
+                        Nature’s economy flows from Source → Work → Value → Purpose. Everything is energy fighting entropy. If our human economy doesn't mirror this natural flow—acting as a transformer for universal welfare rather than a machine for greed—it is destined to collapse.
+                    </p>
+                </div>
+
+                <div class="law-card reveal">
+                    <div class="roman-bg">II</div>
+                    <div class="icon-box"><i class="fas fa-microchip"></i></div>
+                    <h3 class="law-heading">The Age of Abundance</h3>
+                    <p class="law-text">
+                        In an era where AI promises post-labor abundance, the traditional labor-for-income model is obsolete. We must redesign civilization using decentralized tech to decouple survival from employment, recoupling it instead with self-transcendence and contribution.
+                    </p>
+                </div>
+
+                <div class="law-card reveal">
+                    <div class="roman-bg">III</div>
+                    <div class="icon-box"><i class="fas fa-circle-notch"></i></div>
+                    <h3 class="law-heading">The Plenum of Nothing</h3>
+                    <p class="law-text">
+                        "Nothing" is not an empty void; it is the quantum plenum, the divine ground of pure potential that consciously limits itself into form. True peace and meaning are not found—they are created through conscious choice and detachment within the limits Nothing has set.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PUBLISHED WORKS SECTION -->
+    <div id="works" class="works-section">
+        <div class="section-header-center reveal">
+            <h2 style="color:var(--void-dark)">Published Works</h2>
+            <div class="gold-line"></div>
+        </div>
+        
+        <div class="books-grid">
+            
+            <!-- BOOK 1 -->
+            <div class="book-card reveal">
+                <div class="cover-area">
+                    <div class="backup-cover">
+                        <h4 style="color:#fff; border-bottom:1px solid #777; padding-bottom:10px;">THE EQUATION<br>OF LIFE</h4>
+                        <span style="font-size:0.8rem; letter-spacing:2px; margin-top:10px;">LEELAW</span>
+                    </div>
+                    <img src="book1.jpg" alt="The Equation of Life" class="book-img" onerror="this.style.display='none'">
+                </div>
+                
+                <span class="book-role">The Metaphysical Foundation</span>
+                <h3 class="book-title">The Equation of Life (2015)</h3>
+                
+                <p class="book-desc">
+                    A raw, deeply personal philosophical journey that derives human ethics from the cosmic substrate. By fusing quantum uncertainty with perennial wisdom, it establishes the ultimate equation: life is a dynamic component of an evolving universe. It is a manual for the soul, showing how detachment and virtuous living align us with Nature's fundamental limits.
+                </p>
+
+                <div class="big-idea-box">
+                    <strong>The Big Idea:</strong> "Nothing in Nothing is Nothing." Meaning is not found; it is created by choosing limits within infinity.
+                </div>
+
+                <div class="btn-container">
+                    <a href="https://www.amazon.com/Equation-Life-As-see/dp/B0D4H94PT8/" class="amazon-btn" target="_blank">Purchase on Amazon</a>
+                    <a href="https://www.goodreads.com/book/show/28044650-the-equation-of-life" target="_blank" class="goodreads-link">View on Goodreads</a>
+                </div>
+            </div>
+
+            <!-- BOOK 2 -->
+            <div class="book-card reveal">
+                <div class="cover-area">
+                    <div class="backup-cover" style="background: linear-gradient(135deg, #4b4b4b, #6b5b3b);">
+                        <h4 style="color:#fff; border-bottom:1px solid #999; padding-bottom:10px;">ECONOMY<br>AS WE NEED IT</h4>
+                        <span style="font-size:0.8rem; letter-spacing:2px; margin-top:10px;">LEELAW</span>
+                    </div>
+                    <img src="book2.jpg" alt="Economy As We Need It" class="book-img" onerror="this.style.display='none'">
+                </div>
+                
+                <span class="book-role">The Actionable Roadmap</span>
+                <h3 class="book-title">Economy #As We Need It (2026)</h3>
+                
+                <p class="book-desc">
+                    A sweeping philosophical-economic manifesto for the AI-driven age of abundance. Applying cosmic principles to human systems, this book proves that the economy must stop being a purpose and become a "transformer." It delivers a concrete roadmap (2026–2035) featuring decentralized network states, blockchain transparency, and the concept of making universal welfare a profitable business.
+                </p>
+
+                <div class="big-idea-box">
+                    <strong>The Big Idea:</strong> Aligning human systems with nature's value-creation to ensure god-like abundance serves all conscious beings.
+                </div>
+
+                <div class="btn-container">
+                    <a href="https://www.amazon.com/Economy-As-Need-Lee-Law/dp/B0GSJPB8RP/ref=sr_1_2?crid=PGB34WVSMT2J&dib=eyJ2IjoiMSJ9.QZTJdVpnQ6HX4-_-F80GgR93LpS-A8OThjJHK7qFLvPUxnborVnw1xiaHSi0xm0zkCklypKfw9Pkv1U7mtBt_4w5xf7okXjZuQEXw1Szpxc8jfsoWj6rDpmK1MwMOGWhsAiillVPhJDSaM_t-A8S-XSz-SphWByoEim677VmXAuLaRVXB1ZPHidO3SrAqOy4p5i0x9ECXVPHdU7ikfPfy5MygMTgrnQwKdLWTa6UJIY.PmSPHElr9V8w30zMb6qnfC6wtEj8uaxCcb8jp73r5uM&dib_tag=se&keywords=leelaw&qid=1774206368&sprefix=%2Caps%2C160&sr=8-2" class="amazon-btn" target="_blank">Purchase on Amazon</a>
+                    <a href="https://www.goodreads.com/book/show/246015566-economy-as-we-need-it" target="_blank" class="goodreads-link">View on Goodreads</a>
+                </div>
+            </div>
+            
+        </div> <!-- End of First Grid -->
+
+        <!-- VISUAL SEPARATOR FOR WIP -->
+        <div class="reveal" style="text-align: center; margin: 100px 0 60px 0;">
+            <span style="font-family: 'Cinzel', serif; font-size: 1.2rem; color: #999; letter-spacing: 4px; border-bottom: 1px solid #e0e0e0; padding-bottom: 10px;">THE HORIZON</span>
+        </div>
+
+        <!-- NEW CONTAINER FOR UPCOMING WORK (Centered) -->
+        <div class="books-grid" style="display: flex; justify-content: center;">
+            
+            <!-- BOOK 3: CONSCIOUSNESS (WIP) -->
+            <div class="book-card reveal" style="max-width: 450px;">
+                <div class="cover-area">
+                    <!-- CSS Generated Cover (Consciousness Theme - Neural Purple) -->
+                    <div class="backup-cover" style="background: linear-gradient(135deg, #240b36, #c31432);">
+                        <div style="font-size: 3rem; color: rgba(255,255,255,0.4); margin-bottom: 15px;">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4 style="color:#fff; border-bottom:1px solid #eda; padding-bottom:10px; letter-spacing: 3px;">PROJECT<br>CONSCIOUSNESS</h4>
+                        <span style="font-size:0.8rem; letter-spacing:2px; margin-top:10px; opacity: 0.8;">LEELAW</span>
+                    </div>
+                </div>
+                
+                <span class="book-role">The Synthesis</span>
+                <h3 class="book-title">The Mechanics of Awareness<br><span style="font-size:0.9rem; font-style:italic; opacity:0.6;">(Working Title)</span></h3>
+                
+                <p class="book-desc">
+                    "Who is the 'I' that experiences the 'Nothing'?"<br><br>
+                    We have explored the laws of the physical universe and the structure of our economy. Now, the journey turns inward. This upcoming work attempts to solve the 'Hard Problem' of consciousness, exploring whether the mind is merely a biological machine or the fundamental canvas upon which reality is painted.
+                </p>
+
+                <div class="big-idea-box">
+                    <strong>The Hypothesis:</strong> Consciousness is not a byproduct of matter; matter is a localized expression of consciousness.
+                </div>
+
+                <div class="btn-container">
+                    <span class="amazon-btn disabled" style="background-color: #f4f4f4; color: #aaa; border: 1px solid #eee; box-shadow: none;">In Research Phase</span>
+                </div>
+            </div>
+
+        </div> <!-- End of Second Grid -->
+        
+    </div>
+
+    <!-- CONTACT FORM -->
+    <div class="contact-section">
+        <div class="contact-container reveal">
+            <h2>Start a Conversation</h2>
+            <p style="margin-bottom: 30px; color: #777;">Have a thought on the books? Send a message directly.</p>
+
+            <form name="contact" method="POST" data-netlify="true">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email Address" required>
+                <textarea name="message" rows="5" placeholder="Write your philosophical query here..." required></textarea>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+
+            <p style="margin-top: 30px; font-size: 0.9rem; color: #888;">
+                Or email me at <a href="mailto:2leelaw@gmail.com" style="color:#555; border-bottom: 1px solid #ccc;">2leelaw@gmail.com</a>
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 LeeLaw. All Rights Reserved.</p>
+        <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.6;">From the Core of Nothingness to the Shore of Purpose.</p>
+    </footer>
+
+    <script>
+        // Reveal Animations on Scroll
+        window.addEventListener('scroll', reveal);
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        reveal(); // Trigger once on load
+    </script>
+
+</body>
+</html>
